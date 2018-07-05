@@ -1,10 +1,12 @@
 const express = require('express');
+const authRoutes = require('./routes/authRoutes');
+require('./services/passport');
+
 const app = express();
+const PORT = process.env.PORT || 5000;
 
-app.get('/', (req, res) => {
-    res.send({ hi: 'there'});
-});
+authRoutes(app);
 
-app.listen(4004, () => {
-    console.log(`Your app was running on localhost:4004`);
+app.listen(PORT, () => {
+    console.log(`Your app was running on localhost:${PORT}`);
 });
